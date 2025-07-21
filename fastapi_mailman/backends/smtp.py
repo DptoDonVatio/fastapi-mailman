@@ -76,7 +76,7 @@ class EmailBackend(BaseEmailBackend):
             self.connection = self.connection_class(self.host, self.port, **connection_params)
             # TLS/SSL are mutually exclusive, so only attempt TLS over
             # non-secure connections.
-            await self.connection.connect()
+            await self.connection.connect(validate_certs=False)
 
             if not self.use_ssl and self.use_tls:
                 await self.connection.starttls(client_key=self.ssl_keyfile, client_cert=self.ssl_certfile)
