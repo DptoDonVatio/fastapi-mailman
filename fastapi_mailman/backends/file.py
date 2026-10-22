@@ -45,7 +45,7 @@ class EmailBackend(ConsoleEmailBackend):
         """Return a unique file name."""
         if self._fname is None:
             timestamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
-            fname = "%s-%s.log" % (timestamp, random.randrange(1e15))
+            fname = "%s-%s.log" % (timestamp, random.randrange(10**15))
             self._fname = os.path.join(self.file_path, fname)
         return self._fname
 
